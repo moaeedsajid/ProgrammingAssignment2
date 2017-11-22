@@ -1,16 +1,16 @@
 ## cachematrix.R Moaeed Sajid
 ## V1 - Orginal Version
 ##
-## makeCacheMatrix will be used a cache to store the matrix and it's inverse.  cacheSolve 
-## will look for the inverse from makeCacheMatrix(mcm).  On the first run this will not be available
-## and so will need to be calculated by cacheSolve and returned for mcm storage.  On subsequent runs 
-## the inverse will be in the mcm cache and not need to be calculated
+## makeCacheMatrix will be used as a cache to store the matrix and it's inverse.  cacheSolve 
+## will look for the inverse from makeCacheMatrix(mcm).  On the first run inverse will not be
+## available and so will need to be calculated by cacheSolve and returned for mcm storage.  On 
+## subsequent runs the inverse will be in the mcm cache and not need to be calculated
 
 ## makeCacheMatrix (mcm) gets and sets the matrix and inverse values  
-## makeCacheMatrix function must be called at least once to create the storage objects.  Subsequent
+## This function must be called at least once to create the storage object.  Subsequent
 ## calls can use get and set against the store
 makeCacheMatrix <- function(x = matrix()) {
-        i <- NULL # As we are writng the matrix here only the inverse value is set to NULL
+        i <- NULL
         setmatrix <- function(y) {
                 x <<- y
                 i <<- NULL
@@ -29,10 +29,10 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-# The cacheSolve function will look for the inverse from makeCacheMatrix. If this is the first time
+# The cacheSolve function will look for the inverse from mcm. If this is the first time
 # the request is made then getinverse will return a null value.  In this case we will solve the 
-# inverse and send it to makeCacheMatrix for storage.  Subsequent requests for the same matrix will
-# retrieve the inverse from makeCacheMatrix
+# inverse and send it to mcm for storage.  Subsequent requests for the same matrix will
+# retrieve the inverse from mcm
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
